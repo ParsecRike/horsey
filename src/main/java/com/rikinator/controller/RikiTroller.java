@@ -16,7 +16,8 @@ public class RikiTroller {
 
 
     @RequestMapping("/doit")
-    public String doIt() {
+    public String doit(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
+        model.addAttribute("name", name);
         return "doit";
     }
 
