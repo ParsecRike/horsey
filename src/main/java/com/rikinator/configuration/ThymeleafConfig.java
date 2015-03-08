@@ -39,13 +39,14 @@ public class ThymeleafConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     @Description("Thymeleaf view resolver")
-    public ThymeleafViewResolver viewResolver() {
-        ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
+    public CustomThymeleafViewResolver viewResolver() {
+        CustomThymeleafViewResolver viewResolver = new CustomThymeleafViewResolver("/WEB-INF/views/", ".html");
         viewResolver.setTemplateEngine(templateEngine());
-        viewResolver.setViewNames(new String[]{"html/*"});
         viewResolver.setOrder(1);
+        viewResolver.setCacheLimit(0);
         return viewResolver;
     }
+
 
     @Bean
     @Description("Spring message resolver")
@@ -66,7 +67,7 @@ public class ThymeleafConfig extends WebMvcConfigurerAdapter {
         InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
         internalResourceViewResolver.setPrefix("/WEB-INF/views/");
         internalResourceViewResolver.setSuffix(".jsp");
-        internalResourceViewResolver.setViewNames("jsp/*");
+        internalResourceViewResolver.setOrder(10);
         return internalResourceViewResolver;
     }
 }
