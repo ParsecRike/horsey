@@ -1,5 +1,7 @@
 package com.rikinator.configuration;
 
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -9,7 +11,12 @@ import org.springframework.web.servlet.view.InternalResourceView;
 import org.springframework.web.servlet.view.RedirectView;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 
+import javax.servlet.ServletContext;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Locale;
 
 /**
@@ -62,25 +69,35 @@ public class CustomThymeleafViewResolver extends ThymeleafViewResolver {
 
         Resource res = null;
 
+
+        boolean exists = false;
         if (viewPath.startsWith("classpath:"))
             res = new ClassPathResource(viewPath.substring(10));
         else if (viewPath.startsWith("file:"))
             res = new FileSystemResource(viewPath.substring(5));
         else {
-            try {
-                res = new UrlResource("file", viewPath);
-            } catch (MalformedURLException e) {
-                logger.info("Unrecognised resource " + viewName);
-                return Boolean.FALSE;   // Can't decide, give up
-            }
+            exists = getResource(viewPath);
         }
 
-        if (!res.exists()) {
+        if (!exists) {
             logger.info(viewPath + " not found, skipping Thymeleaf");
             return Boolean.FALSE;
         }
 
         logger.info("Found " + viewName + ", using Thymeleaf");
         return Boolean.TRUE;
+    }
+
+    private boolean getResource(String viewPath)  {
+        Resource res;
+        ServletContext context = getServletContext();
+        URL url = null;
+        try {
+            url = context.getResource(viewPath);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        File f = new File(url != null ? url.getPath() : "");
+        return f.exists();
     }
 }
