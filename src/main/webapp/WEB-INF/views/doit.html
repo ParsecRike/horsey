@@ -1,25 +1,26 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-    <title>Thyme</title>
-    <link rel="stylesheet" type="text/css" href="/resources/css/styles.css" th:href="@{/resources/css/styles.css}" />
-</head>
-<body>
+<!-- embed example -->
+<script th:remove="all" type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script th:remove="all" type="text/javascript" src="../resources/js/thymol-1/js/thymol.js"></script>
+
+<div th:replace="task/meta :: meta-head"></div>
+
+<div>
+
+    <div class="grid">
+        <!-- 100% wide -->
+        <h1 th:text="${name}">Hallo du da</h1>
 
 
+        reload mal
+    </div>
 
-
-
-
-<div class="grid">
-    <!-- 100% wide -->
-    <h1 th:text="${name}">Hallo du da</h1>
 </div>
 
+<div th:include="task/footer :: copy">
+</div>
 
-
-
-</body>
 </html>

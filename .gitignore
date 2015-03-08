@@ -2,3 +2,4 @@
 target
 mypage.iml
 src/main/html/assets/bootstrap-3.3.2
+src/main/webapp/WEB-INF/resources/js/thymol-1

@@ -1,6 +1,7 @@
 package com.rikinator.configuration;
 
 
+import nz.net.ultraq.thymeleaf.LayoutDialect;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -25,6 +26,7 @@ public class ThymeleafConfig extends WebMvcConfigurerAdapter {
         templateResolver.setPrefix("/WEB-INF/views/");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode("HTML5");
+        templateResolver.setCacheable(false);
         return templateResolver;
     }
 
@@ -33,7 +35,7 @@ public class ThymeleafConfig extends WebMvcConfigurerAdapter {
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
-
+        templateEngine.addDialect(new LayoutDialect());
         return templateEngine;
     }
 
