@@ -1,8 +1,10 @@
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
     <title>Thyme</title>
-    <link rel="stylesheet" type="text/css" href="./assets/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="/resources/css/styles.css" th:href="@{/resources/css/styles.css}" />
 </head>
 <body>
 
@@ -13,7 +15,7 @@
 
 <div class="grid">
     <!-- 100% wide -->
-    <h1>Thyme : ${name} 2</h1>
+    <h1 th:text="${name}">Hallo du da</h1>
 </div>
 
 
