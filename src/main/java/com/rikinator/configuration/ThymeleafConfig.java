@@ -25,8 +25,6 @@ public class ThymeleafConfig extends WebMvcConfigurerAdapter {
         templateResolver.setPrefix("/WEB-INF/views/");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode("HTML5");
-        templateResolver.setOrder(0);
-
         return templateResolver;
     }
 
@@ -45,7 +43,7 @@ public class ThymeleafConfig extends WebMvcConfigurerAdapter {
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine());
         viewResolver.setViewNames(new String[]{"html/*"});
-        viewResolver.setExcludedViewNames(new String[]{"jsp/*"});
+        viewResolver.setOrder(1);
         return viewResolver;
     }
 
@@ -66,7 +64,6 @@ public class ThymeleafConfig extends WebMvcConfigurerAdapter {
     @Bean
     public InternalResourceViewResolver internalResourceViewResolver(){
         InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
-        internalResourceViewResolver.setOrder(5);
         internalResourceViewResolver.setPrefix("/WEB-INF/views/");
         internalResourceViewResolver.setSuffix(".jsp");
         internalResourceViewResolver.setViewNames("jsp/*");

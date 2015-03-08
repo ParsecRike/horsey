@@ -11,7 +11,7 @@ public class RikiTroller {
     @RequestMapping("/hello")
     public String hello(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
         model.addAttribute("name", name);
-        return "helloworld";
+        return "jsp/helloworld";
     }
 
 
