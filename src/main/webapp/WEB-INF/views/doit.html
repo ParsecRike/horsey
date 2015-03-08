@@ -2,25 +2,90 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
+<head>
+    <meta charset="utf-8"></meta>
+
 <!-- embed example -->
+    <!-- Thymol: http://www.thymoljs.org/documents/control/thVars.html?docu&para -->
 <script th:remove="all" type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<script th:remove="all" type="text/javascript" src="../resources/js/thymol-1/js/thymol.js"></script>
+    <script type="text/javascript"> var thDebug = true; var thVars = [[ 'name' , 'riki']];</script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/thymol/latest/thymol.min.js"></script>
+<link th:replace="task/meta :: styles" />
+    <!-- Bootstrap -->
+    <link href="../resources/css/bootstrap.min.css" rel="stylesheet" />
+    <link  rel="stylesheet" type="text/css" href="../resources/css/styles.css" />
 
-<div th:replace="task/meta :: meta-head"></div>
-
-<div>
-
-    <div class="grid">
-        <!-- 100% wide -->
-        <h1 th:text="${name}">Hallo du da</h1>
+</head>
 
 
-        reload mal
+<body>
+<div class="row grid">
+    <div class="col-md-12">
+        Level 1: .col-md-12
+        <div class="page-header">
+            <h1>Example page header <small>Subtext for header</small></h1>
+        </div>
+
+        <div th:replace="task/nav :: navbar "></div>
     </div>
-
 </div>
-
-<div th:include="task/footer :: copy">
+    <div class="row">
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+    </div>
+<div class="row">
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img src="..." alt="..."></img>
+            <div class="caption">
+                <h3>Thumbnail label</h3>
+                <p>...</p>
+                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img src="..." alt="..."></img>
+            <div class="caption">
+                <h3>Thumbnail label</h3>
+                <p>...</p>
+                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img src="..." alt="..."></img>
+            <div class="caption">
+                <h3>Thumbnail label</h3>
+                <p>...</p>
+                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            </div>
+        </div>
+    </div>
 </div>
-
+    <div class="row">
+        <div class="col-md-4">.col-md-4</div>
+        <div class="col-md-4">.col-md-4</div>
+        <div class="col-md-4">.col-md-4</div>
+    </div>
+<div class="jumbotron">
+    <h1>Hello, world!</h1>
+    <p>...</p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+</div>
+<div th:replace="task/footer :: copy">
+</div>
+</body>
 </html>

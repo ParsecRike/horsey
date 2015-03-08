@@ -2,6 +2,11 @@
 
 
 
+body {
+    width: 80%;
+    margin: auto;
+}
+
 .grid {
     background-color: yellow;
 }

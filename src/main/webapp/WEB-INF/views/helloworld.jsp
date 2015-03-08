@@ -15,6 +15,6 @@
     <title>Spring4 MVC -HelloWorld</title>
 </head>
 <body>
-<h1>Hello : ${name} 1</h1>
+<h1>Hello : ${name} you are awesome</h1>
 </body>
 </html>
